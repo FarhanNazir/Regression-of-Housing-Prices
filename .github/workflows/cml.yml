@@ -6,13 +6,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: iterative/setup-tools@v1
-      - uses: actions/checkout@v2
-      - name: cml_run
+      - name: Run training and metrics
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-        run:
+        run: |
           pip install -r requirements.txt
           python train.py
-
           echo "MODEL METRICS"
           cat metrics.txt
